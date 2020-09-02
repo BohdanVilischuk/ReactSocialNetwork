@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
@@ -9,32 +9,27 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
-
 const App = (props) => {
   return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Navbar />
-        <div className="app-wrapper-content">
+    <div className="app-wrapper">
+      <Header />
+      <Navbar />
+      <div className="app-wrapper-content">
+        <Route
+          path="/dialogs"
+          render={() => <Dialogs state={props.state.messagesPage} />}
+        />
 
-          <Route path="/dialogs" render={() => 
-          <Dialogs 
-            state={props.state.messagesPage}  />} />
-            
-          <Route path="/profile" render={() => <Profile 
-            state={props.state.profilePage} />} />
+        <Route
+          path="/profile"
+          render={() => <Profile addPost={props.addPost} state={props.state.profilePage} />}
+        />
 
-
-
-          <Route path="/settings" component={Settings} />
-          <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-
-
-        </div>
+        <Route path="/settings" component={Settings} />
+        <Route path="/news" component={News} />
+        <Route path="/music" component={Music} />
       </div>
-    </BrowserRouter>
+    </div>
   );
 };
 

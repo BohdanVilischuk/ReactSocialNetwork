@@ -12,9 +12,6 @@ const DialogItem = (props) => {
     </div>
   );
 };
-const Message = (props) => {
-  return <div className={s.message}>{props.message}</div>;
-};
 
 
 export default DialogItem;

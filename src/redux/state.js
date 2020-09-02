@@ -3,6 +3,8 @@
 //   { id: 2, message: "Its my first post", likesCount: 20 },
 // ];
 
+import { rerenderEntireTree } from "../render";
+
 // let dialogs = [
 //   { id: 1, name: "Andrew" },
 //   { id: 2, name: "Yarick" },
@@ -48,5 +50,18 @@ let state = {
       ],
   },
 };
+ 
+
+export let addPost = (postMessage) => {
+  debugger;
+  let newPost = {
+    id: 3,
+    message: postMessage,
+    likesCount: 0
+  };
+
+  state.profilePage.posts.push(newPost)
+  rerenderEntireTree(state)
+}
 
 export default state;
